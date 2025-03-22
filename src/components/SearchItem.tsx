@@ -28,7 +28,11 @@ const SearchItem: React.FC<SearchItemProps> = ({productProps}) => {
         }, 300);
 
         return () => clearTimeout(handler);
+
     }, [query, fuse]);
+
+
+
     return (
         <div className="w-[300px] mx-auto my-5 text-center relative">
             <h1 className="text-2xl font-bold mb-4 bg-gradient-to-b from-black to-blue-600 text-transparent bg-clip-text">
