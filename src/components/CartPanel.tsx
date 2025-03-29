@@ -59,12 +59,12 @@ import {usePopupStore} from "@/store/popUpStore";
                  {/* Panel */}
                  <div
 
-                     className="relative min-h-screen  flex items-center justify-center p-4">
+                     className="relative min-h-screen  flex items-center justify-center p-4 overflow-hidden">
                      <div
                          ref={panelRef}
 
                          onClick={(e) => e.stopPropagation()}
-                         className="relative bg-white rounded-lg  shadow-xl max-w-md w-full max-h-[150vh] overflow-y-auto">
+                         className="relative bg-white rounded-lg  shadow-xl max-w-md w-full max-h-[150vh] overflow-hidden">
                          {/* Close button */}
                          <button
                              onClick={() => {
