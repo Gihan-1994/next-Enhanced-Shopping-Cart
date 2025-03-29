@@ -77,7 +77,7 @@ import {usePopupStore} from "@/store/popUpStore";
                          </button>
 
                          {/* Panel content */}
-                         <div className="p-6 text-black">
+                         <div className=" p-6 text-black">
                              {items.length === 0 ? (
                                  <div className="text-center py-8">
                                      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
