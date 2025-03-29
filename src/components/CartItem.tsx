@@ -17,7 +17,7 @@ const CartItem: React.FC<CartItemProps> = ({item}) => {
 
     return (
 
-        <div className="flex flex-row items-between justify-between w-full py-4 ">
+        <div className="flex items-center justify-between w-full py-4 ">
             <div className="flex flex-col items-center">
                 {/* Image Container - Added rounded-full and overflow-hidden */}
                 <div className="w-20 h-20 flex-shrink-0 relative overflow-hidden rounded-full">
@@ -47,7 +47,7 @@ const CartItem: React.FC<CartItemProps> = ({item}) => {
 
 
             {/* Product details - Adjusted margin */}
-            <div className="ml-4 flex-grow-1">
+            <div className="ml-4 flex-grow">
                 <h3 className="text-lg font-medium">{item.product.name}</h3>
                 <p className="text-gray-600">${item.product.price.toFixed(2)}</p>
 
@@ -56,7 +56,7 @@ const CartItem: React.FC<CartItemProps> = ({item}) => {
             </div>
 
             {/* Item total */}
-            <div className=" flex-col  items-end ml-6  text-center  ">
+            <div className=" flex-col items-end space-y-1 ml-6  text-right    ">
                 <div>
                     <p className="font-medium">${itemTotal.toFixed(2)}</p>
                 </div>
