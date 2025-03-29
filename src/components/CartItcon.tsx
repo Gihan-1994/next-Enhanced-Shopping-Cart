@@ -2,14 +2,26 @@
 import React from 'react';
 import Link from 'next/link';
 import {useCartStore} from '@/store/cartStore';
+import {usePopupStore} from "@/store/popUpStore";
+
 
 const CartIcon: React.FC = () => {
     // Access cart state from Zustand store
     const {totalItems} = useCartStore();
 
+    const { openPopup } = usePopupStore();
+
     return (
-        <Link href="/cart" className="relative">
-            <div className="flex items-center">
+        <div className="relative">
+            <button
+                onClick={openPopup}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Cart"
+            >
+
+
+
+
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-12 w-12"
@@ -32,8 +44,11 @@ const CartIcon: React.FC = () => {
             {totalItems()}
           </span>
                 )}
-            </div>
-        </Link>
+
+            </button>
+
+
+        </div>
     );
 };
 

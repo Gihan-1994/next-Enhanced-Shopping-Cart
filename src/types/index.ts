@@ -4,6 +4,10 @@ export interface Product {
     price: number;
     image: string;
     description: string;
+    category: string;
+    brand: string;
+    inStock: boolean;
+    freeShipping: boolean;
 }
 
 

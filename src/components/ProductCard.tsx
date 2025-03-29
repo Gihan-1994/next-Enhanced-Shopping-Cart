@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import {Product} from "@/types";
 import {useCartStore} from "@/store/cartStore";
+import {useFreeShipping} from "@/store/filterStore";
 
 interface ProductCardProps {
     product: Product;
@@ -11,9 +12,15 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({product}) => {
     const addToCart = useCartStore((state) => state.addToCart);
     const isAdded = useCartStore((state) => state.isAddedToCart(product.id));
+    const isFreeShipping = useFreeShipping();
     return (
-        <div className="bg-white rounded shadow overflow-hidden ">
-            <div className="relative h-58 w-100vw h-100vh">
+        <div className=" bg-white rounded shadow overflow-hidden ">
+            <div className="relative h-58 w-100vw h-100vh ">
+                {!isFreeShipping && product.freeShipping &&(
+                    <div className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-10">
+                        FREE Shipping
+                    </div>
+                )}
                 <Image
                     src={product.image}
                     alt={product.name}
@@ -24,11 +31,12 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
                 />
             </div>
 
-            <div className="p-4">
+            <div className="flex-col p-4">
                 <div className="flex-col">
                     <h3 className="text-lg font-semibold">{product.name}</h3>
                     <p className="text-gray-600 mt-1">${product.price.toFixed(2)}</p>
                     <p className="text-gray-500 text-sm mt-2 line-clamp-2">{product.description}</p>
+
                 </div>
 
                 <div className="mb-4 pb-4">
