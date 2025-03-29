@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import Link from 'next/link';
 import {useCartStore} from '@/store/cartStore';
 import {usePopupStore} from "@/store/popUpStore";
 

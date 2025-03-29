@@ -1,9 +1,7 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import {ProductProvider} from "@/contexts/ProductContext";
-
 
 
 export const metadata: Metadata = {
@@ -23,11 +21,11 @@ export default function RootLayout({
 
         >
         <ProductProvider>
-<div >
-    <Header />
-</div>
+            <div>
+                <Header/>
+            </div>
 
-        {children}
+            {children}
         </ProductProvider>
         </body>
         </html>

@@ -1,17 +1,26 @@
 "use client"
+
 import React from "react";
-import {useFilterActions,useInStock,usePriceRange,useSelectedCategories,useSelectedBrands,availableCategories,availableBrands} from "@/store/filterStore";
+import {
+    useFilterActions,
+    useInStock,
+    usePriceRange,
+    useSelectedCategories,
+    useSelectedBrands,
+    useAvailableCategories,
+    useAvailableBrands
+} from "@/store/filterStore";
 import Slider from "rc-slider";
 import 'rc-slider/assets/index.css'
 
 const FilterNav: React.FC = () => {
-    const {setPriceRange,toggleCategory,toggleBrand,toggleInStock,resetFilters} = useFilterActions();
+    const {setPriceRange, toggleCategory, toggleBrand, toggleInStock, resetFilters} = useFilterActions();
     const priceRange = usePriceRange();
     const selectedCategories = useSelectedCategories();
     const selectedBrands = useSelectedBrands();
     const inStock = useInStock();
-    const categories = availableCategories();
-    const brands = availableBrands();
+    const categories = useAvailableCategories()
+    const brands = useAvailableBrands()
 
 
     return (
@@ -22,45 +31,19 @@ const FilterNav: React.FC = () => {
                 <h3 className="font-medium mb-2">Price Range</h3>
                 <div className="flex items-center space-x-2">
                     <span className="ml-2 text-blue-700">${priceRange.min}</span>
-            <Slider
-                range
-                className="horizontal-slider mb-4 w-full text-blue-700"
-                handleStyle= {[
-                    {
-                        backgroundColor: 'grey',
-                        borderColor: 'grey',
-                        height: 16,
-                        width: 16,
-                        marginTop: -10,
-                        opacity: 1,
-                    },
-                    {
-                        backgroundColor: 'grey',
-                        borderColor: 'grey',
-                        height: 16,
-                        width: 16,
-                        marginTop: -10,
-                        opacity: 1,
-                    }
-                ]}
-                trackStyle={{
-                    backgroundColor: 'black',
-                    height: 4,
-                }}
-                railStyle={{
-                    backgroundColor: '#e5e7eb',
-                    height: 4,
-                }}
-                defaultValue={[priceRange.min, priceRange.max]}
-                min={0}
-                max={500}
-                onChange={(value: number | number[]) => {
-                    if (Array.isArray(value)) {
-                        setPriceRange({ min: value[0], max: value[1] });
-                    }
-                }}
-                pushable={10}
-            />
+                    <Slider
+                        range
+                        className="horizontal-slider mb-4 w-full text-blue-700"
+                        defaultValue={[priceRange.min, priceRange.max]}
+                        min={0}
+                        max={500}
+                        onChange={(value: number | number[]) => {
+                            if (Array.isArray(value)) {
+                                setPriceRange({min: value[0], max: value[1]});
+                            }
+                        }}
+                        pushable={10}
+                    />
                     <span className="ml-2 text-blue-700">${priceRange.max}</span>
                 </div>
             </div>
@@ -125,7 +108,6 @@ const FilterNav: React.FC = () => {
         </div>
 
 
-
-
-    )}
+    )
+}
 export default FilterNav

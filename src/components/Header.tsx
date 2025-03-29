@@ -1,9 +1,8 @@
 'use client'
-import React , {useMemo, useRef, useState}  from "react";
+import React from "react";
 import SearchItem from "@/components/SearchItem";
 import Link from "next/link";
 import CartIcon from "@/components/CartItcon";
-import {Product} from "@/types";
 import {useSearchStore} from "@/store/searchStore";
 import Profile from "@/components/Profile";
 import {useContext} from "react";
@@ -11,11 +10,7 @@ import {ProductContext} from "@/contexts/ProductContext";
 import CartPanel from "@/components/CartPanel";
 
 
-interface HeaderProps {
-    products: Product[]
-}
-
-const Header: React.FC= () => {
+const Header: React.FC = () => {
 
     const products = useContext(ProductContext);
 
@@ -49,8 +44,8 @@ const Header: React.FC= () => {
                             Your Cart
                         </h2>
                         <div className="relative">
-                            <CartIcon />
-                            <CartPanel />
+                            <CartIcon/>
+                            <CartPanel/>
                         </div>
                     </div>
 

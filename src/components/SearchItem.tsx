@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import {useState, useEffect,useRef} from "react";
 import Fuse from "fuse.js";
 import {Product} from "@/types";
-import ProductCard from "@/components/ProductCard";
+
 
 interface SearchItemProps {
     productProps: Product[];

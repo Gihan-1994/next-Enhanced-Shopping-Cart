@@ -16,8 +16,9 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
     return (
         <div className=" bg-white rounded shadow overflow-hidden ">
             <div className="relative h-58 w-100vw h-100vh ">
-                {!isFreeShipping && product.freeShipping &&(
-                    <div className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-10">
+                {!isFreeShipping && product.freeShipping && (
+                    <div
+                        className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-10">
                         FREE Shipping
                     </div>
                 )}

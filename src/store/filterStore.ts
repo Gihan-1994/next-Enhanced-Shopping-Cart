@@ -1,4 +1,3 @@
-
 import {create} from "zustand";
 import {shallow} from "zustand/vanilla/shallow";
 import {useMemo} from "react";
@@ -7,6 +6,7 @@ interface PriceRange {
     min: number;
     max: number;
 }
+
 interface FilterState {
     priceRange: PriceRange;
 
@@ -19,6 +19,7 @@ interface FilterState {
     inStock: boolean;
     freeShipping: boolean;
 }
+
 interface FilterActions {
     setPriceRange: (p_Range: PriceRange) => void;
     toggleCategory: (inputCategory: string) => void;
@@ -27,11 +28,12 @@ interface FilterActions {
     toggleFreeShipping: () => void;
     resetFilters: () => void;
 }
+
 const initialState: FilterState = {
     priceRange: {min: 0, max: 1000},
     categories: ["Audio", "Video", "Computer_Accessories", "Gadgets"],
     selectedCategories: [],
-    brands: ["Apple", "Edifier", "Sony","Transcend"],
+    brands: ["Apple", "Edifier", "Sony", "Transcend"],
     selectedBrands: [],
     inStock: false,
     freeShipping: false
@@ -43,8 +45,8 @@ type UseFilterStore = {
     (): FilterState & FilterActions;
 };
 
- export const useFilterStoreBase = create<FilterState & FilterActions>((set) => ({
-   ...initialState,
+export const useFilterStoreBase = create<FilterState & FilterActions>((set) => ({
+    ...initialState,
     setPriceRange: (p_Range) => set({priceRange: p_Range}),
 
 
@@ -61,27 +63,27 @@ type UseFilterStore = {
     toggleInStock: () => set((state) => ({
         inStock: !state.inStock
     })),
-     toggleFreeShipping: () => set((state) => ({
+    toggleFreeShipping: () => set((state) => ({
         freeShipping: !state.freeShipping
-     })),
+    })),
     resetFilters: () => set(() => ({
-       ...initialState
+        ...initialState
     }))
 }))
 const useFilterStore = useFilterStoreBase as UseFilterStore
 // selectors
 export const useSelectedCategories = () => useFilterStore((state) => state.selectedCategories, shallow);
-export const useSelectedBrands = () => useFilterStore((state) => state.selectedBrands,shallow);
+export const useSelectedBrands = () => useFilterStore((state) => state.selectedBrands, shallow);
 export const usePriceRange = () => useFilterStore((state) => state.priceRange);
 export const useInStock = () => useFilterStore((state) => state.inStock);
-export const availableCategories = () => useFilterStore((state) => state.categories);
-export const availableBrands = () => useFilterStore((state) => state.brands);
+export const useAvailableCategories = () => useFilterStore((state) => state.categories);
+export const useAvailableBrands = () => useFilterStore((state) => state.brands);
 export const useFreeShipping = () => useFilterStore((state) => state.freeShipping);
 
 export const useFilterActions = () => {
     const setPriceRange = useFilterStore(state => state.setPriceRange);
-    const toggleCategory = useFilterStore(state => state.toggleCategory,shallow);
-    const toggleBrand = useFilterStore(state => state.toggleBrand,shallow);
+    const toggleCategory = useFilterStore(state => state.toggleCategory, shallow);
+    const toggleBrand = useFilterStore(state => state.toggleBrand, shallow);
     const toggleInStock = useFilterStore(state => state.toggleInStock);
     const toggleFreeShipping = useFilterStore(state => state.toggleFreeShipping);
 

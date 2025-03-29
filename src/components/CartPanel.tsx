@@ -1,6 +1,5 @@
 "use client"
 import React, {useRef, useEffect} from "react";
-import Link from "next/link";
 import {useCartStore} from "@/store/cartStore";
 import CartItem from "@/components/CartItem";
 import {usePopupStore} from "@/store/popUpStore";
